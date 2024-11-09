@@ -14,7 +14,7 @@ export default function ContactForm({ onAdd }) {
       name: values.name,
       number: values.number,
     });
-    console.log(values);
+    // console.log(values);
 
     actions.resetForm();
   };
