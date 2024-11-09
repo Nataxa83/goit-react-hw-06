@@ -11,11 +11,13 @@ export default function App() {
   //   const currentContact = localStorage.getItem("contacts");
   //   return currentContact ? JSON.parse(currentContact) : initialContacts;
   // });
-  const [filter, setFilter] = useState("");
+  // const [filter, setFilter] = useState("");
 
   
-const contacts = useSelector((state) => state.contactsData.items);
+  const contacts = useSelector((state) => state.contactsData.items);
 const dispatch = useDispatch();
+
+
 
   
 
@@ -38,9 +40,7 @@ const dispatch = useDispatch();
     dispatch(action);
   };
 
-  const visibleContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(filter.toLocaleLowerCase())
-  );
+
 
   // useEffect(() => {
   //   localStorage.setItem("contacts", JSON.stringify(contacts));
@@ -50,8 +50,8 @@ const dispatch = useDispatch();
     <>
       <h1 className={css.title}>Phonebook</h1>
       <ContactForm onAdd={addContact} />
-      <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList contacts={visibleContacts} onDelete={deleteContact} />
+      <SearchBox  />
+      <ContactList  onDelete={deleteContact} />
     </>
   );
 }

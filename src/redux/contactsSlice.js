@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 
 }
 
-export const contactsReducer = (state = INITIAL_STATE, action) => {
+export const  contactsReducer = (state = INITIAL_STATE, action) => {
    switch (action.type) {
     case "contacts/addContact":
       return {
@@ -20,7 +20,7 @@ export const contactsReducer = (state = INITIAL_STATE, action) => {
           items: state.items.filter(contact => contact.id !== action.payload)
           
           
-      } ;
+      } ;  
     default:
       return state;
   }
