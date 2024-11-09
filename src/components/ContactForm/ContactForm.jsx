@@ -41,13 +41,13 @@ export default function ContactForm({ onAdd }) {
     >
       <Form className={css.contactForm}>
         <label>
-          <span>Name</span>
+          <span className={css.label}>Name</span>
         </label>
         <Field type="text" name="name" className={css.formInput} />
         <ErrorMessage className={css.errorName} name="name" component="span" />
 
         <label>
-          <span>Number</span>
+          <span className={css.label}>Number</span>
         </label>
         <Field type="tel" name="number" className={css.formInput} />
         <ErrorMessage

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import SearchBox from "./components/SearchBox/SearchBox";
 import ContactForm from "./components/ContactForm/ContactForm";
 import { useDispatch, useSelector } from "react-redux";
+import css from "./App.module.css";
 
 export default function App() {
   // const [contacts, setContacts] = useState(() => {
@@ -47,7 +48,7 @@ const dispatch = useDispatch();
 
   return (
     <>
-      <h1>Phonebook</h1>
+      <h1 className={css.title}>Phonebook</h1>
       <ContactForm onAdd={addContact} />
       <SearchBox value={filter} onFilter={setFilter} />
       <ContactList contacts={visibleContacts} onDelete={deleteContact} />
