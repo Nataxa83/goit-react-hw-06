@@ -2,3 +2,10 @@
     margin: 0 auto;
     width: 400px;
 }
+
+.text {
+    text-align: center;
+    margin-top: 20px;
+    color: coral;
+    font-size: 25px;
+}

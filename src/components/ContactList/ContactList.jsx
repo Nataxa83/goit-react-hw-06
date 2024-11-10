@@ -1,16 +1,18 @@
 import css from "./ContactList.module.css";
-import Contact from "../Contact/Contact";
 import { useSelector } from "react-redux";
 
+import Contact from "../Contact/Contact";
 export default function TaskList({  onDelete }) {
 
   const contacts = useSelector((state) => state.contactsData.items);
-  const filteredContacts = useSelector((state) => state.filtersData.filter);
+  const filteredContacts = useSelector((state) => state.filtersData.name);
 
   const visibleContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(filteredContacts.toLocaleLowerCase().trim())
+    contact.name.toLowerCase().includes(filteredContacts.toLocaleLowerCase())
   );
-
+  if (visibleContacts.length === 0) {
+    return <p className={css.text}>No contacts found</p>;
+  }
   return (
     <ul className={css.list}>
       {visibleContacts.map((contact) => (

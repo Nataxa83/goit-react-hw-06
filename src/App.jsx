@@ -1,11 +1,9 @@
 import ContactList from "./components/ContactList/ContactList";
-import initialContacts from "./components/contacts.json";
-import { useState, useEffect } from "react";
 import SearchBox from "./components/SearchBox/SearchBox";
 import ContactForm from "./components/ContactForm/ContactForm";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import css from "./App.module.css";
-
+import { addContact, deleteContact } from "./redux/contactsSlice";
 export default function App() {
   // const [contacts, setContacts] = useState(() => {
   //   const currentContact = localStorage.getItem("contacts");
@@ -14,29 +12,32 @@ export default function App() {
   // const [filter, setFilter] = useState("");
 
   
-  const contacts = useSelector((state) => state.contactsData.items);
-const dispatch = useDispatch();
+  // const contacts = useSelector((state) => state.contactsData.items);
+  const dispatch = useDispatch();
 
 
 
   
 
 
-  const addContact = (newContact) => {
-    // setContacts((prevContact) => {
-    //   return [...prevContact, newContact];
-    // });
-    const action = { type: "contacts/addContact", payload: newContact };
+  const addContactCard = (newContact) => {
+  //   // setContacts((prevContact) => {
+  //   //   return [...prevContact, newContact];
+  //   // });
+  //   // const action = { type: "contacts/addContact", payload: newContact };
+  //   // dispatch(action);
+    const action = addContact(newContact);
     dispatch(action);
   };
 
 
 
-  const deleteContact = (contactId) => {
+  const deleteContactCard = (contactId) => {
     // setContacts((prevContact) => {
     //   return prevContact.filter((contact) => contact.id !== contactId);
     // });
-    const action = { type: "contacts/deleteContact", payload: contactId };
+   
+    const action = deleteContact(contactId);
     dispatch(action);
   };
 
@@ -49,9 +50,9 @@ const dispatch = useDispatch();
   return (
     <>
       <h1 className={css.title}>Phonebook</h1>
-      <ContactForm onAdd={addContact} />
+      <ContactForm onAdd={addContactCard} />
       <SearchBox  />
-      <ContactList  onDelete={deleteContact} />
+      <ContactList  onDelete={deleteContactCard} />
     </>
   );
 }
