@@ -2,7 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import css from "./ContactForm.module.css";
 
 import { addContact } from "../../redux/contactsSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { contactFormSchema } from "../../components/contactFormSchema";
 
 const initialValues = {
@@ -13,7 +13,14 @@ const initialValues = {
 export default function ContactForm() {
   
   const dispatch = useDispatch();
+
+  const contacts = useSelector((state) => state.contactsData.items);
   const handleSubmit = (values, actions) => {
+
+    if (contacts.some(contact => contact.number === values.number)) {
+      alert("This number already exists!");
+      return;
+    }
     const newContact = {
       id: Date.now(),
       name: values.name,
