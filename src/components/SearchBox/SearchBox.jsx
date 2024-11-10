@@ -9,9 +9,9 @@ export default function SearchBox() {
   const filteredContacts = useSelector((state) => state.filtersData.name);
   const dispatch = useDispatch();
 
-  const onFilterValue = () => {
-    (e)=>{ const action = onFilter(e.target.value);
-        dispatch(action);}
+  const onFilterValue = (e) => {
+     const action = onFilter(e.target.value);
+        dispatch(action);
     
   }
   return (
