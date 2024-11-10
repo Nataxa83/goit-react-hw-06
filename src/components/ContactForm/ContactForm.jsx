@@ -1,38 +1,29 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import css from "./ContactForm.module.css";
-import * as Yup from "yup";
+
+import { addContact } from "../../redux/contactsSlice";
+import { useDispatch } from "react-redux";
+import { contactFormSchema } from "../../components/contactFormSchema";
 
 const initialValues = {
   name: "",
   number: "",
 };
 
-export default function ContactForm({ onAdd }) {
+export default function ContactForm() {
+  
+  const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
-    onAdd({
+    const newContact = {
       id: Date.now(),
       name: values.name,
-      number: values.number,
-    });
-    // console.log(values);
-
+      number: values.number,      
+    }
+    const action = addContact(newContact);
+    dispatch(action);
     actions.resetForm();
   };
-
-  const phoneRegExp = /^[0-9]{3}-[0-9]{2}-[0-9]{2}$/;
-
-  const contactFormSchema = Yup.object().shape({
-    name: Yup.string()
-      .min(3, "Name must be at least 3 characters")
-      .max(50, "Max 50 characters ")
-      .required("Name is required"),
-    number: Yup.string()
-      .min(3, "Number must be at least 3 characters")
-      .max(50, "Max 50 characters ")
-      .required("Number is required")
-      .matches(phoneRegExp, "Number format is 'xxx-xx-xx'"),
-  });
-
+  
   return (
     <Formik
       initialValues={initialValues}
