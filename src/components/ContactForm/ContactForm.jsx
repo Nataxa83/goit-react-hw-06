@@ -34,13 +34,13 @@ export default function ContactForm() {
         <label>
           <span className={css.label}>Name</span>
         </label>
-        <Field type="text" name="name" className={css.formInput} />
+        <Field type="text" name="name" placeholder=" Jhon Smith" className={css.formInput} />
         <ErrorMessage className={css.errorName} name="name" component="span" />
 
         <label>
           <span className={css.label}>Number</span>
         </label>
-        <Field type="tel" name="number" className={css.formInput} />
+        <Field type="tel" name="number" placeholder="+XX XX XXX XX XX" className={css.formInput} />
         <ErrorMessage
           className={css.errorNumber}
           name="number"
