@@ -3,7 +3,7 @@ import CONTACTS from "../components/contacts.json"
 
 const INITIAL_STATE = {
        items: CONTACTS
-}
+};
 
 
 export const contactsSlice = createSlice({

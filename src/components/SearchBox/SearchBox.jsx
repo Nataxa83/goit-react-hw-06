@@ -3,7 +3,6 @@ import { onFilter } from "../../redux/filtersSlice";
 
 import css from "./SearchBox.module.css";
 
-
 export default function SearchBox() {
 
   const filteredContacts = useSelector((state) => state.filtersData.name);

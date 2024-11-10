@@ -20,11 +20,10 @@ export default function Contact({ data: { id, name, number }}) {
           </div>
         </div>
         <button type="button" className={css.btn} onClick={() =>  {
-    const action = deleteContact(id);
-    dispatch(action);
-  }}
->
-          Delete
+                const action = deleteContact(id);
+                dispatch(action);
+                }}>
+                Delete
         </button>
       </div>
     </>
